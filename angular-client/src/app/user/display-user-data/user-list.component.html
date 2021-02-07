@@ -1,0 +1,25 @@
+ <mat-table  [dataSource]="posts">
+  <ng-container  matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>User Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef> Surname</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.surname}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+  </ng-container> -->
+
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
+  *ngIf="posts.length > 0"></mat-paginator>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+
+
